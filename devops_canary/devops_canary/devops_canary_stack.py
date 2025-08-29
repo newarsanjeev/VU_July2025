@@ -164,7 +164,7 @@ class DevopsCanaryStack(Stack):
             av_alarm = cloudwatch.Alarm(
                 self, f"AvailAlarm{frag}",
                 metric=av_metric,
-                threshold=0.99,  # treat 0 as breach
+                threshold=1,  # treat 0 as breach
                 evaluation_periods=1,
                 datapoints_to_alarm=1,
                 comparison_operator=cloudwatch.ComparisonOperator.LESS_THAN_THRESHOLD,
@@ -190,7 +190,7 @@ class DevopsCanaryStack(Stack):
                 evaluation_periods=1,
                 datapoints_to_alarm=1,
                 comparison_operator=cloudwatch.ComparisonOperator.GREATER_THAN_THRESHOLD,
-                treat_missing_data=cloudwatch.TreatMissingData.NOT_BREACHING,
+                treat_missing_data=cloudwatch.TreatMissingData.BREACHING,
                 alarm_description=f"Latency above {LATENCY_THRESHOLD_MS} ms for {url}"
             )
             lt_alarm.add_alarm_action(cw_actions.SnsAction(latency_topic))
