@@ -70,4 +70,3 @@ DynamoDB → WebsiteAlarmLog → Explore items → check alarm entries
 To avoid AWS charges:
 cdk destroy
 
-<img width="468" height="659" alt="image" src="https://github.com/user-attachments/assets/c2b8e863-2f83-401e-8b70-6af4df614d2b" />
